@@ -24,7 +24,7 @@ Para este proyecto se proporcionaron tres archivos JSON:
 
 Se realizó la extracción, transformación y carga (ETL) de los tres conjuntos de datos entregados.
 
-Los detalles del ETL se puede ver en [ETL output_steam_games](https://github.com/freddyv1828/PI_MILOPS_steam/blob/main/ETL/output_steam_games.ipynb), [ETL australian_users_items](https://github.com/freddyv1828/PI_MILOPS_steam/blob/main/ETL/users_items.ipynb) y [ETL australian_user_reviews](https://github.com/freddyv1828/PI_MILOPS_steam/blob/main/ETL/user_reviews.ipynb)
+Los detalles del ETL se puede ver en [ETL output_steam_games](https://github.com/edwvaz/Machine-Learning-Operations.-Steam-Games/blob/main/ETL/output_steam_games.ipynb), [ETL australian_users_items](https://github.com/edwvaz/Machine-Learning-Operations.-Steam-Games/blob/main/ETL/users_items.ipynb) y [ETL australian_user_reviews](https://github.com/edwvaz/Machine-Learning-Operations.-Steam-Games/blob/main/ETL/users_items.ipynb)
 
 ## Feature engineering
 
@@ -34,27 +34,27 @@ Se logro aplicar un análisis de sentimiento a los reviews de los usuarios. Para
 * 1 si es neutral o esta sin review
 * 2 si es positivo.
 
-Todos los detalles del desarrollo se pueden ver en la Jupyter Notebook [01d_Feature_eng](https://github.com/freddyv1828/PI_MILOPS_steam/blob/main/Feature%20Engineering/feature_engineering.ipynb).
+Todos los detalles del desarrollo se pueden ver en la Jupyter Notebook [01d_Feature_eng](https://github.com/edwvaz/Machine-Learning-Operations.-Steam-Games/blob/main/Feature%20Engineering/feature_engineering.ipynb).
 
 ## EDA
 Se realizó el EDA a los tres conjuntos de datos sometidos a ETL. Para ello se utilizó la librería Pandas para la manipulación de los datos y las librerías Matplotlib y Seaborn para la visualización.
-El desarrollo de este análisis se encuentra en la Jupyter Notebook [EDA](https://github.com/freddyv1828/PI_MILOPS_steam/blob/main/EDA/Eda.ipynb)
+El desarrollo de este análisis se encuentra en la Jupyter Notebook [EDA](https://github.com/edwvaz/Machine-Learning-Operations.-Steam-Games/blob/main/EDA/Eda.ipynb)
 
 ## Modelo de aprendizaje automático
 
 En el primer caso, el modelo tiene una relación ítem-ítem, esto es, se toma un juego y en base a que tan similar es ese juego con el resto de los juegos se recomiendan similares. En el segundo caso, el modelo aplicar un filtro usuario-juego, es decir, toma un usuario, encuentra usuarios similares y se recomiendan ítems que a esos usuarios similares les gustaron.
 
 
-El desarrollo para la creación de los dos modelos se presenta en la Jupyter Notebook [04_Modelo_recomendacion](https://github.com/freddyv1828/PI_MILOPS_steam/blob/main/Funciones/recomendacion_juego.ipynb).
+El desarrollo para la creación de los dos modelos se presenta en la Jupyter Notebook [04_Modelo_recomendacion](https://github.com/edwvaz/Machine-Learning-Operations.-Steam-Games/blob/main/Funciones/recomendacion_juego.ipynb).
 
 ## Desarrollo API
 
-Para el desarrolo de la API se decidió utilizar el framework FastAPI. creando las siguientes funciones: [Funciones](https://github.com/freddyv1828/PI_MILOPS_steam/tree/main/Funciones)
+Para el desarrolo de la API se decidió utilizar el framework FastAPI. creando las siguientes funciones: [Funciones](https://github.com/edwvaz/Machine-Learning-Operations.-Steam-Games/tree/main/Funciones)
 
 ## Deployment
 
 Para el deploy de la API se seleccionó la plataforma Render
 
-El servicio se encuentra corriendo en el siguiente enlace : [https://pi-steam-milops.onrender.com]
+El servicio se encuentra corriendo en el siguiente enlace : [https://despliegemachinelearningfastapi.onrender.com]
 
 
