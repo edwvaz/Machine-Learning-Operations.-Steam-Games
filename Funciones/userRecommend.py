@@ -21,7 +21,11 @@ def userRecomend(año: int):
     # Ordenamos y obtenemos el top3
     top_games = games.nlargest(3, "recommend_count")
     
-    resultado = [{"Puesto {}: {}".format(i + 1, row['games']): row['recommend_count']} for i, row in top_games.iterrows()] 
+    # Usamos f-strings para formatear la salida
+    resultado = [{f"Puesto {i}: {row['games']}": row['recommend_count']} for i, row in enumerate(top_games.index, 1)]
+
+
+    #resultado = [{"Puesto {}: {}".format(i + 1, row['games']): row['recommend_count']} for i, row in top_games.iterrows()] 
     
     return resultado
 

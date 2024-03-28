@@ -3,7 +3,7 @@ import pandas as pd
 import datetime as dt
 import re
 import numpy as np
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+#from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # Verificar tipo de dtos de los dataframe
 def verificar_datos(df):

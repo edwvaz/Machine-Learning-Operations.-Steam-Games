@@ -1,6 +1,7 @@
 import pandas as pd
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
+from fastapi.responses import RedirectResponse
 from Funciones.play_time_genre import playTimeGenre
 from Funciones.sentiment_analysis import sentiment_analysis
 from  Funciones.user_for_genre import user_for_genre
@@ -11,17 +12,21 @@ from Funciones.recomendacion_juego import recomendacion_juego
 
 app = FastAPI()
 
-@app.get(path="/", 
-         response_class=HTMLResponse,
-         tags=["Home"])
-def home():
-    '''
-    Página de inicio que muestra una presentación.
+#@app.get(path="/", 
+#         response_class=HTMLResponse,
+#         tags=["Home"])
+#def home():
+#    '''
+#    Página de inicio que muestra una presentación.
 
-    Returns:
-    HTMLResponse: Respuesta HTML que muestra la presentación.
-    '''
-    return presentacion()
+#    Returns:
+#    HTMLResponse: Respuesta HTML que muestra la presentación.
+#    '''
+#    return presentacion()
+
+@app.get("/", include_in_schema=False)
+async def redirect_to_docs():
+    return RedirectResponse(url="/docs")
 
 
 # Endpoint 1
@@ -32,7 +37,8 @@ def get_playTimeGenre(genero: str):
     '''Ingresa el Nombre de un Genero de videojuegos y veras el año con horas mas jugadas para dicho genero. 
 
         Ejemplo de retorno: {"Año de lanzamiento con más horas jugadas para Género X" : 2013}
-    
+
+        Algunos géneros para probar: Action, Casual, Indie, Simulation, Strategy, Racing.
     '''
     result = playTimeGenre(genero)
     
@@ -47,6 +53,8 @@ def get_userForGenre(genero: str):
 
         Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, 
         {Año: 2011, Horas: 23}]}
+
+        Algunos géneros para probar: Action, Casual, Indie, Simulation, Strategy, Racing.
     
     '''
     
@@ -92,6 +100,8 @@ def get_sentiment_analysis(desarrolladora: str):
     '''Ingresa un el nombre de una empresa desarrolladora y veras la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor. 
 
         Ejemplo de retorno: {'Valve' : [Negative = 182, Neutral = 120, Positive = 278]}
+
+        Algunas desarroladoras para probar: Valve
     
     '''
     
@@ -105,17 +115,10 @@ def get_sentiment_analysis(desarrolladora: str):
 @app.get("/recomendacion_juego/{game_id}")
 def get_recomendacion_juego(game_id: int):
     
-    '''Ingresa un el ide de un juego veras una lista con 5 juegos recomendados similares al ingresado.
+    '''Ingresa un el id de un juego veras una lista con 5 juegos recomendados similares al ingresado.
 
-        Ejemplo de retorno: recomendacion_juego(3000)
-        
-        [{'id': '636132',
-        'title': 'X-Plane 11 - Add-on: Aerosoft Airport Bonaire Flamingo'},
-        {'id': '747910', 'title': 'Disassembly 3D'},
-        {'id': '603550', 'title': 'Schlag den Star - Das Spiel'},
-        {'id': '271412', 'title': 'Rocksmith® 2014 – Aerosmith - “Oh Yeah”'},
-        {'id': '342832', 'title': 'Rocksmith® 2014 – All That Remains - “Two Weeks”'}]
-    
+        Ejemplo game_id: 3000
+            
     '''
     recomend = recomendacion_juego(game_id)
     return recomend
